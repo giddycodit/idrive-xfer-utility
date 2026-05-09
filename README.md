@@ -104,6 +104,7 @@ All data metrics, verification records, and cryptographic lineages will be appen
 
 ### 📋 Folder Structure
 
+```text
 idrive-xfer-utility/
 ├── .gitignore          <- Blocks token leaks and cache junk
 ├── LICENSE             <- MIT open-source freedom license
@@ -111,3 +112,4 @@ idrive-xfer-utility/
 ├── setup-idrive        <- Fetches and authenticates IDrive CLI
 ├── setup-rclone        <- Injects the playground config tokens
 └── transfer.py         <- The core forensic Python copy engine
+```
