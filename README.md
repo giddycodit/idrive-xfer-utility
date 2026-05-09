@@ -92,7 +92,43 @@ rclone lsd gdrive:
 ```
 *If this prints your top-level Google Drive cloud folder structure, your secure pipeline architecture is verified and ready.*
 
-### 🚀 Launch the Transfer Agent
+### 📂 Step 5: Configure the Transfer Job Queue
+
+Before executing the migration agent, define your global processing limits and queue up your targeted folders. Create a file named **`transfer.json`** in your project root directory and structure your multi-job queue using this array layout:
+
+```json
+{
+  "max_folder_size_bytes": 5368709120,
+  "max_retries": 3,
+  "jobs": [
+    {
+      "from": "gdrive",
+      "to": "idrive",
+      "gdrive_path": "gdrive:Media/Photos/2025_Archive",
+      "idrive_path": "/PersonalBackup/Archive/Photos"
+    },
+    {
+      "from": "gdrive",
+      "to": "idrive",
+      "gdrive_path": "gdrive:Work/Documents/Legal",
+      "idrive_path": "/PersonalBackup/Documents/Legal"
+    },
+    {
+      "from": "gdrive",
+      "to": "idrive",
+      "gdrive_path": "gdrive:HomeVideos/Dashcam",
+      "idrive_path": "/PersonalBackup/Videos/Raw"
+    }
+  ]
+}
+```
+
+#### 📋 Array Architecture Breakdown:
+*   **Global Parameters:** `max_folder_size_bytes` (e.g., `5368709120` bytes equals a **5 GB** ceiling) and `max_retries` apply globally across the entire run to protect your Codespace storage limits.
+*   **`jobs` Array:** A sequential list of independent migration tasks. The Python utility engine will automatically process these tasks one after another.
+*   **Isolated Targets:** Each job block lets you specify unique, dedicated matching locations on both Google Drive and IDrive Personal Backup.
+
+### 🚀 Step 6: Launch the Transfer Agent
 To initiate the automated transfer sequence—sorting your files from newest to oldest, logging dual hashes, and respecting your local cache boundaries—execute the main Python utility engine:
 ```bash
 python3 transfer.py
