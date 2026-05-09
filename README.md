@@ -83,7 +83,7 @@ chmod +x setup-idrive.sh
 
 ---
 
-## 📊 Phase 3: Run Validation & Execution
+---
 
 ### 📋 Connection Verification Check
 Before launching multi-gigabyte background execution loops, run this explicit conceptual concept check to prove the container environment resolves your cloud storage mapping natively:
@@ -99,3 +99,15 @@ python3 transfer.py
 ```
 
 All data metrics, verification records, and cryptographic lineages will be appended continuously to your local `transfer_log.csv` file for permanent forensic reference.
+
+---
+
+### 📋 Folder Structure
+
+idrive-xfer-utility/
+├── .gitignore          <- Blocks token leaks and cache junk
+├── LICENSE             <- MIT open-source freedom license
+├── README.md           <- The professional guide we just generated
+├── setup-idrive        <- Fetches and authenticates IDrive CLI
+├── setup-rclone        <- Injects the playground config tokens
+└── transfer.py         <- The core forensic Python copy engine
