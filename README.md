@@ -102,7 +102,7 @@ All data metrics, verification records, and cryptographic lineages will be appen
 
 ---
 
-### 📋 Folder Structure
+### 📁 Folder Structure
 
 ```text
 idrive-xfer-utility/
